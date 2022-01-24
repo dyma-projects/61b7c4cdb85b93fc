@@ -6,10 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserService {
 
-  public users: BehaviorSubject<String[]> = new BehaviorSubject[];
+  public users$?: BehaviorSubject<String[]> = new BehaviorSubject([]);
 
-  public addUser() {
-
+  public addUser(user : string) {
+    this.users$.subscribe((users : string[]) => {
+      users.push(user);
+    })
   }
 
   constructor() { }
